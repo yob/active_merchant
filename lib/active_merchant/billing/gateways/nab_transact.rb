@@ -10,7 +10,7 @@ module ActiveMerchant #:nodoc:
     # periodic API, so I useed the SecurePayAuGateway as a basis for this
     # new class.
     #
-    class NabGateway < Gateway
+    class NabTransactGateway < Gateway
       API_VERSION = 'xml-4.2'
       PERIODIC_API_VERSION = "spxml-4.2"
 
@@ -254,4 +254,3 @@ module ActiveMerchant #:nodoc:
     end
   end
 end
-
