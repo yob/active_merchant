@@ -64,11 +64,11 @@ module ActiveMerchant #:nodoc:
       end
       
       def purchase(money, payment_source, options = {})
-        if credit_card.is_a?(ActiveMerchant::Billing::CreditCard)
+        if payment_source.is_a?(ActiveMerchant::Billing::CreditCard)
           requires!(options, :order_id)
-          commit :purchase, build_purchase_request(money, credit_card, options)
-        elsif credit_card.to_s.size > 0
-          options[:billingid] = credit_card.to_s
+          commit :purchase, build_purchase_request(money, payment_source, options)
+        elsif payment_source.to_s.size > 0
+          options[:billingid] = payment_source.to_s
           commit_periodic(build_periodic_item(:trigger, money, nil, options))
         else
           raise ArgumentError, "credit_card must be a ActiveMerchant::Billing::CreditCard or string with size > 0"
