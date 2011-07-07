@@ -36,7 +36,7 @@ module ActiveMerchant #:nodoc:
         end
 
         money = amount(money)
-        case creditcard.number
+        case payment_source.number
         when '1'
           Response.new(true, SUCCESS_MESSAGE, {:paid_amount => money}, :test => true)
         when '2'
