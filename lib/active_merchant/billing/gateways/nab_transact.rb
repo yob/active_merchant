@@ -159,6 +159,7 @@ module ActiveMerchant #:nodoc:
           end
         end
         xml.tag! 'amount', amount(money)
+        xml.tag! 'currency', options[:currency] || currency(money)
 
         xml.target!
       end
